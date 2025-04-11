@@ -22,6 +22,20 @@ if __name__ == "__main__":
         ranSet = genMix(M, multi, incr, seed, n)
         print("The ranSet generated is: " + str(ranSet))
         print("The size of the list is: " + str(len(ranSet)))
+
+        import matplotlib.pyplot as plt
+
+        # Graficar los pares (X_n, X_{n+1})
+        x_vals = ranSet[:-1]
+        y_vals = ranSet[1:]
+
+        plt.figure(figsize=(6, 6))
+        plt.scatter(x_vals, y_vals, color='blue', s=25)
+        plt.title("Pares (Z_n, Z_{n+1}) del generador")
+        plt.xlabel("Z_n")
+        plt.ylabel("Z_{n+1}")
+        plt.grid(True)
+        plt.show()
     except IndexError:
         print("Bad Index")
     except ValueError:
