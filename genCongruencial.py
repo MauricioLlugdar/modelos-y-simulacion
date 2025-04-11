@@ -1,10 +1,10 @@
 def genMix(M: int, multi: int, incr: int, seed: int, n: int) -> list[int]:
-    ranSet: list[int] = [seed]
+    ranList: list[int] = [seed]
     newSeed: int = seed
     for i in range(1, n):
         newSeed = ((multi*newSeed) + incr) % M
-        ranSet.append(newSeed)
-    return ranSet
+        ranList.append(newSeed)
+    return ranList
     
 
 if __name__ == "__main__":
@@ -19,15 +19,16 @@ if __name__ == "__main__":
             print("The increment is 0 => multiplicative generator")
         else:
             print("The increment is not 0 => mix generator")
-        ranSet = genMix(M, multi, incr, seed, n)
-        print("The ranSet generated is: " + str(ranSet))
-        print("The size of the list is: " + str(len(ranSet)))
+        ranList = genMix(M, multi, incr, seed, n)
+        print("The ranList generated is: " + str(ranList))
+        ranSet = set(ranList)
+        print("The size of the list without rep is: " + str(len(ranSet)))
 
         import matplotlib.pyplot as plt
 
         # Graficar los pares (X_n, X_{n+1})
-        x_vals = ranSet[:-1]
-        y_vals = ranSet[1:]
+        x_vals = list(ranList)[:-1]
+        y_vals = list(ranList)[1:]
 
         plt.figure(figsize=(6, 6))
         plt.scatter(x_vals, y_vals, color='blue', s=25)
