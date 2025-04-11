@@ -5,6 +5,7 @@ def genMix(M: int, multi: int, incr: int, seed: int, n: int) -> list[int]:
         newSeed = ((multi*newSeed) + incr) % M
         ranSet.append(newSeed)
     return ranSet
+    
 
 if __name__ == "__main__":
     try:
@@ -14,6 +15,10 @@ if __name__ == "__main__":
         incr = int(sys.argv[3])
         seed = int(sys.argv[4])
         n = int(sys.argv[5])
+        if incr == 0:
+            print("The increment is 0 => multiplicative generator")
+        else:
+            print("The increment is not 0 => mix generator")
         ranSet = genMix(M, multi, incr, seed, n)
         print("The ranSet generated is: " + str(ranSet))
         print("The size of the list is: " + str(len(ranSet)))
