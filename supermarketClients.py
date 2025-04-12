@@ -21,8 +21,8 @@ def waitCounters(counter: int, time: int) -> int:
             timeForEvent = 4
         case 3:
             timeForEvent = 5
-    ranWait = expon.cdf(time, scale=timeForEvent) #P(X_(counter)<4) and this func calcs lambda 1/timeForEvent
-    return ranWait
+    prob4minWait = expon.cdf(time, scale=timeForEvent) #P(X_(counter)<4) and this func calcs lambda 1/timeForEvent
+    return prob4minWait
 
 def probLess4minWait()->float:
     i:int=0
