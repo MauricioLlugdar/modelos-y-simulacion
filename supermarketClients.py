@@ -76,6 +76,6 @@ def wait4minWhichCounter()-> list[float, float, float]:
     return [probCounter_1IfMoreT4min, probCounter_2IfMoreT4min, probCounter_3IfMoreT4min]
 
 if __name__ == "__main__":
-
+    probabilities:list[float, float, float] = wait4minWhichCounter()
     print(f" The probability of waiting less than 4 min was of {probLess4minWait()}")
-    print(f" If the client wait for more than 4 min the probability  {wait4minWhichCounter()}")
+    print(f" If the client wait for more than 4 min the probability of counter 1: {probabilities[0]}, counter 2: {probabilities[1]} y counter 3: {probabilities[2]}")
