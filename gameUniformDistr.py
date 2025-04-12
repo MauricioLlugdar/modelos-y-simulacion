@@ -17,7 +17,7 @@ def game(attempts: int)->float:
                 wins += 1
         games += 1
     
-    return (wins/attempts)
+    return (wins/attempts) ## percentage of wins
 
 if __name__ == "__main__":
     print(game(int(sys.argv[1])))
