@@ -66,9 +66,6 @@ def wait4minWhichCounter()-> list[float, float, float]:
                 probCounter_3IfMoreT4min += (1 - waitCounters(3, 4)) * counterProb(3) / probWaitMoreT4min # P(X_j > 4) * P(counter_j) / P(T>4)
                 amountC3+=1
         i+=1
-    print(amountC1)
-    print(amountC2)
-    print(amountC3)
     probCounter_1IfMoreT4min = probCounter_1IfMoreT4min / amountC1 if amountC1 > 0 else 0
     probCounter_2IfMoreT4min = probCounter_2IfMoreT4min / amountC2 if amountC2 > 0 else 0
     probCounter_3IfMoreT4min = probCounter_3IfMoreT4min / amountC3 if amountC3 > 0 else 0
