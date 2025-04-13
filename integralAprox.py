@@ -16,6 +16,10 @@ def integral4(u:float)->float:
 def integral5(u:float, v:float)->float:
     return (math.e**(u+v)**2)
 
+def integral6(u:float, v:float)->float:
+    iy = 1 if u > v else 0
+    return (math.e**(-(u+v))*iy)
+
 def monteCarlo01(n:int, g)->float:
     sumatory: float = 0
     for _ in range(1, n):
@@ -43,11 +47,20 @@ def monteCarloI0inf(n:int, f)->float:
 
 def monteCarloDoubleIntegral(n: int, f) -> float:
     sumatory: float = 0
-    for _ in range(n):
+    for _ in range(1,n):
         x = random.uniform(0, 1)  
         y = random.uniform(0, 1)  
         sumatory += f(x, y)       
     value: float = (1/n) * sumatory  
+    return value
+
+def monteCarloDoubleIntegral0toInf(n:int,f)->float:
+    sumatory: float = 0
+    for _ in range(1,n):
+        x = random.uniform(0, 1)  
+        y = random.uniform(0, 1)
+        sumatory += f(1/x-1, 1/y-1)*(1/y**2)*(1/x**2)
+    value: float = (1/n)* sumatory
     return value
 
 if __name__ == "__main__":
@@ -66,4 +79,5 @@ if __name__ == "__main__":
     #aprox integral on 0 to 1 of integral 0 to 1 of e^(x+y)²dx dy
     print(monteCarloDoubleIntegral(100000, integral5))
 
-
+    #aprox integral on 0 to inf of integral 0 to x of e^(-(x+y))dx dy
+    print(monteCarloDoubleIntegral0toInf(100000, integral6))
