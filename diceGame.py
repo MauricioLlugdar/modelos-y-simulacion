@@ -21,4 +21,5 @@ def gameSim(nSim: int)->float:
     return (wins/nSim)
 
 if __name__ == "__main__":
-    print(gameSim(10000000))
+    for nSim in [1000, 10000, 100000, 1000000]:
+        print(f"P(win in {nSim} simulations)={gameSim(nSim)}")
