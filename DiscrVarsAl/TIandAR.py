@@ -32,6 +32,8 @@ def accRejec()-> float:
         Y: int = PoissonImproved(lam)
         U: float = random.uniform(0,1)
         # P(X = x_j)/P(Y = y_j) <= c
+        if Y > k:
+            continue
         
         if U < (massFunctionEX8(Y) / (c * poisson.pmf(Y, lam))):
             return Y
