@@ -14,7 +14,8 @@ def PoissonImproved(lamda: float) -> int:
         while (U>=F):
             p*= lamda /j
             F += p
-        return j+1
+            j +=1
+        return j-1
     else:
         j = int(lamda)
         while (U < F):
