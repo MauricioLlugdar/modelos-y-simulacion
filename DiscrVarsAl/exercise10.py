@@ -9,11 +9,11 @@ def massFunction(n:int)->float:
 
 def varDiscAleat()->int:
     U = np.random.uniform(0,1)
-    i=0
-    F = accumFunction(0)
+    i=1
+    F = massFunction(1)
     while U >= F:
         i += 1
-        F += accumFunction(i)
+        F += massFunction(i)
     return i
 
 if __name__ == "__main__":
