@@ -2,13 +2,7 @@ import numpy as np
 
 fLamI = lambda t: 3 + 4/(t+1) if 0<=t<=3 else 0
 fLamII = lambda t: (t-2)**2 - 5*t + 17 if 0<=t<=5 else 0
-fLamIII = lambda t : (
-    t/2-1 if 2 <= t <= 3
-    else 
-    1 - t/6 if 3 <= t <= 6
-    else
-    0
-)
+fLamIII = lambda t : t/2-1 if 2 <= t <= 3 else 1 - t/6 if 3 <= t <= 6 else 0
 
 def poisson_no_homogeneous_slim(T, flam, lam):
     NT=0
