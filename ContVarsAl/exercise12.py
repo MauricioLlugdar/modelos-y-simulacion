@@ -11,5 +11,3 @@ def poissonEvents(lam, T):
             NT += 1
             Events.append(t)
     return NT, Events
-
-print(poissonEvents(3,5))
