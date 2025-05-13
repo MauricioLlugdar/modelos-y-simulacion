@@ -1,3 +1,4 @@
+from time import time
 import numpy as np
 
 def CAUCHY(lam):
@@ -11,7 +12,12 @@ def CAUCHY(lam):
 if __name__ == "__main__":
     Nsim = 10000
     lam = [1,2.5,0.3]
-    
+
+    start = time()
     for i in range(3):
         resLam = sum([-lam[i] < CAUCHY(lam[i]) < lam[i] for _ in range(Nsim)])/Nsim
         print(f"For lam={lam[i]} the result falls into ({-lam[i], lam[i]}): {resLam}")
+    
+    elapsed = time() - start
+
+    print(f"It took {elapsed}s")
