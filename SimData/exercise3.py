@@ -25,16 +25,16 @@ def aproxByL(f, Nsim):
     
 
 def print_table(results):
-    print(f"{'N° de sim.':>12} | {'Ī':>9} | {'S':>9} | {'IC(95%)':>25}")
-    print("-" * 64)
+    print(f"{'N° de sim.':>12} | {'Ī':>9} | {'S':>9} | {'IC(95%)':>23}")
+    print("-" * 62)
     for N, mean, S, IC in results:
         IC_str = f"[{mean - IC:.4f}, {mean + IC:.4f}]"
-        print(f"{(N if N != 0 else n):>12} | {mean:>9.4f} | {S:>9.4f} | {IC_str:>25}")
+        print(f"{(N if N != 0 else n):>12} | {mean:>9.4f} | {S:>9.4f} | {IC_str:>23}")
 
 results = []
 for f in [f_i, f_ii]:
     print(f"Monte carlo aproximation for {'f_i' if f == f_i else 'f_ii'}:")
-    print("-" * 64)
+    print("-" * 62)
     for N in [0, 1000, 5000, 7000]:
         n, mean, S, IC = aproxByL(f, N)
         results.append((N, mean, S, IC))
