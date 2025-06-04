@@ -15,7 +15,8 @@ def aproxByL(f, Nsim):
     L = 0.001
     n, Ssq = 1, 0
     mean = f(uniform(0,1))
-    while n <= 100 or (sqrt(Ssq / n ) > L)* Nsim or Nsim>n: # If Nsim = 0 => automatic error
+    k = 2 if Nsim else 1
+    while n <= 100 or (k * z * sqrt(Ssq / n ) > L)* Nsim or Nsim>n: # If Nsim = 0 => automatic error
         n += 1
         predMean = mean
         mean = predMean + (f(uniform(0,1)) - predMean) / n
@@ -28,13 +29,13 @@ def print_table(results):
     print("-" * 64)
     for N, mean, S, IC in results:
         IC_str = f"[{mean - IC:.4f}, {mean + IC:.4f}]"
-        print(f"{N:>12} | {mean:>9.4f} | {S:>9.4f} | {IC_str:>25}")
+        print(f"{(N if N != 0 else n):>12} | {mean:>9.4f} | {S:>9.4f} | {IC_str:>25}")
 
 results = []
 for f in [f_i, f_ii]:
     print(f"Monte carlo aproximation for {'f_i' if f == f_i else 'f_ii'}:")
     print("-" * 64)
-    for N in [1000, 5000, 7000]:
+    for N in [0, 1000, 5000, 7000]:
         n, mean, S, IC = aproxByL(f, N)
         results.append((N, mean, S, IC))
     print_table(results)
