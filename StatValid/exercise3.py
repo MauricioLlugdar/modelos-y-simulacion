@@ -1,20 +1,23 @@
 from numpy.random import uniform
 
-data = [0.12, 0.18, 0.6, 0.33, 0.72, 0.83, 0.36, 0.27, 0.77, 0.74]
+data = [0.12, 0.18, 0.06, 0.33, 0.72, 0.83, 0.36, 0.27, 0.77, 0.74]
 n = len(data)
-for i in range(n):
-        d = max( (data[i] - (i)/n), (i+1)/n - data[i] )
 
-def ks():
+def stadKS(arrData: list[float], func):
+    arrDataOrd = sorted(arrData)
+    D = max([max( (func(arrDataOrd[j]) - (j)/n), (j+1)/n - func(arrDataOrd[j]) ) for j in range(n)])
+    return D
+
+d = stadKS(data, lambda x : x)
+
+def ks(Nsim):
     p_val = 0
-    for _ in range(n):
+    for _ in range(Nsim):
         uniVals = [uniform(0,1) for _ in range(n)]
-        uniVals.sort()
-        dSim = max([max( (uniVals[j] - (j)/n), (j+1)/n - uniVals[j] ) for j in range(n)])
-        if dSim <= d:
-             p_val += 1
-    return p_val/n
-
+        dSim = stadKS(uniVals, lambda x : x)
+        if dSim >= d:
+            p_val += 1
+    return p_val/Nsim
 
 Nsim = 10000
-print(sum([ks() for _ in range(Nsim)])/Nsim)
+print(ks(Nsim))
