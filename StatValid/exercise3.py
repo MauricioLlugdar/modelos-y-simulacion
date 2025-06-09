@@ -7,7 +7,7 @@ for i in range(n):
 
 def ks():
     p_val = 0
-    for i in range(n):
+    for _ in range(n):
         uniVals = [uniform(0,1) for _ in range(n)]
         uniVals.sort()
         dSim = max([max( (uniVals[j] - (j)/n), (j+1)/n - uniVals[j] ) for j in range(n)])
