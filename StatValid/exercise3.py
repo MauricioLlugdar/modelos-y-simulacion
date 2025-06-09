@@ -13,8 +13,6 @@ def ks():
         dSim = max([max( (uniVals[j] - (j)/n), (j+1)/n - uniVals[j] ) for j in range(n)])
         if dSim <= d:
              p_val += 1
-    print(dSim)
-    print(d)
     return p_val/n
 
 
