@@ -48,5 +48,5 @@ print("Expected freq:", expected)
 print("Statistical chi2:", originalT)
 print("p-valor (simulado):", estim_pvalue(10000))
 
-gradeChi2 = len(groups) - 1 - 1
-print(f"Calc chi2 p-valor (real) = {1 - chi2.cdf(originalT, gradeChi2):5f}")
+dof = len(groups) - 1 - 1
+print(f"Calc chi2 p-valor (real) = {1 - chi2.cdf(originalT, dof):5f}")
